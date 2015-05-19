@@ -63,8 +63,8 @@ app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeo
 		}
 	]);
 	
-	$menu.setConfig({
+	$menu.setConfig([
 		
-	});
+	]);
 	
 }]);

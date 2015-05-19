@@ -146,6 +146,9 @@ noeditorview {
 	noeditorview p {
 		font-weight: 300;		
 	}
+	noeditorview p a {
+		color: #6dcddf;
+	}
 
 /* borders */
 editor:before,

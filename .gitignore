@@ -1,5 +1,12 @@
+# osx
 .DS_Store
+
+# downloadable / generatable
 node_modules
 bower_components
 public
 core
+
+# build
+build
+cache

@@ -35,7 +35,7 @@ loadModule('font-awesome',	'theme',	'./app/components/themes/font-awesome/');
 /*
  * Use this area to define global settings for your app like the file editor config and devtools
  */
-app.run(['$rootScope', '$timeout', '$file', function($rootScope, $timeout, $file) {
+app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeout, $file, $menu) {
 	
 	// devmode
 	require('nw.gui').Window.get().showDevTools();
@@ -62,4 +62,9 @@ app.run(['$rootScope', '$timeout', '$file', function($rootScope, $timeout, $file
 			}
 		}
 	]);
+	
+	$menu.setConfig({
+		
+	});
+	
 }]);

@@ -20,7 +20,12 @@ loadModule('auth', 			'header',	'./app/components/headers/devkit-homey-header-au
 loadModule('play', 			'header',	'./app/components/headers/devkit-homey-header-play/');
 
 // widgets
-// nope..
+// TODO
+
+// popups
+loadModule('login',			'popup',	'./app/components/popups/login/');
+loadModule('settings',		'popup',	'./app/components/popups/settings/');
+loadModule('debug',			'popup',	'./app/components/popups/debug/');
 
 // themes
 loadModule('custom_icons',	'theme',	'./app/components/themes/custom_icons/');
@@ -43,14 +48,12 @@ app.run(['$rootScope', '$timeout', '$file', function($rootScope, $timeout, $file
 				widgets: [ 'svg' ]
 			}
 		},
-		/*
 		{
 			ext: ".md",
 			config: {
 				widgets: [ 'markdown' ]
 			}
 		},
-		*/
 		{
 			base: 'app.json',
 			dir: '/',

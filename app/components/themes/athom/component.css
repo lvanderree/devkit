@@ -146,11 +146,28 @@ noeditorview {
 	noeditorview p {
 		font-weight: 300;		
 	}
-	
-editormain {
-	border: 1px solid rgba(0,0,0,0.2);
-	border-right: none;
-	border-bottom: none;
+
+/* borders */
+editor:before,
+editor:after {
+	content: "";
+	position: absolute;
+	background: rgba(0,0,0,0.2);
+}
+editor:before {
+	top: 0;
+	left: 1px;
+	right: 0;
+	height: 1px;
+}
+editor.widgets:before {
+	right: 300px;
+}
+editor:after {
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 1px;
 }
 
 tabs {
@@ -165,6 +182,61 @@ editorviews {
 	bottom: 10px;
 	right: 10px;
 }
+
+editor.widgets editorviews {
+	margin-right: 10px;
+}
+
+widgets {
+	top: 0px;
+	margin-top: 0;
+	border-left: 1px solid rgba(0,0,0,0.2);
+	padding: 0 10px;
+}
+	widgets widgetwrap {
+		background: white;
+		box-shadow: 0 0 5px rgba(0,0,0,0.25);
+		border-radius: 3px;
+		overflow: hidden;
+	}
+		widgets widgetwrap .title,
+		widgets widgetwrap .title:active {
+			background: #eee;
+		}
+		widgets widgetwrap .title:hover {
+			background: #f6f6f6;
+		}
+			widgets widgetwrap .title .name {
+				margin-left: 6px;
+			}
+			widgets widgetwrap.collapsed .title .name {
+				color: #888;
+			}
+			widgets widgetwrap .title:before {
+				content: "";
+				position: absolute;
+				left: 9px;
+				top: 9px;
+				border-top: 4px solid #333;
+				border-left: 4px solid transparent;
+				border-right: 4px solid transparent;
+				
+				transition: all 0.3s;
+				transform: rotate(0deg);
+			}
+			widgets widgetwrap.collapsed .title:before {
+				transform: rotate(-90deg);
+			}
+		widgets widgetwrap widget {
+			max-height: 800px;
+			transition: max-height 0.2s, padding 0.2s;
+		}
+		widgets widgetwrap.collapsed widget {
+			max-height: 0;
+			padding-top: 0;
+			padding-bottom: 0;
+			overflow: hidden;
+		}
 
 
 /* codemirror */
@@ -191,3 +263,21 @@ editorviews {
 .cm-quote {color: #090;}
 .cm-hr {color: #999;}
 .cm-link {color: #00c;}
+
+/* popup */
+.ngdialog .ngdialog-close:before {
+	font-size: 12px;
+	height: 20px;
+	line-height: 19px;
+	right: -10px;
+	top: -10px;
+	width: 20px;
+	background: black;
+	border-radius: 15px;
+	border: 1px solid white;
+	color: white;
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.ngdialog-content {
+	border-radius: 3px;
+}

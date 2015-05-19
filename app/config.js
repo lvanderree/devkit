@@ -4,7 +4,8 @@ window.CONFIG = {};
 window.CONFIG.paths = {
 	root:		window.location.protocol + '//' + window.location.hostname + ':' + window.location.port,
 	login:		'https://devkit.athom.nl/auth',
-	apiRoot:	'https://api.athom.nl'
+	apiRoot:	'https://api.athom.nl',
+	account:	'https://my.athom.nl'
 };
 
 // url whitelist

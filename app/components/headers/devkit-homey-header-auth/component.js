@@ -1,4 +1,4 @@
-var HeaderAuthController = function($scope, $rootScope, $http)
+var HeaderAuthController = function($scope, $rootScope, $http, $popup)
 {	
 	$scope.apiRoot = window.CONFIG.paths.apiRoot;
 	$scope.user = undefined;
@@ -19,7 +19,6 @@ var HeaderAuthController = function($scope, $rootScope, $http)
 	$scope.changeActiveHomey = function( homey_id ){
 		window.localStorage.activeHomey = homey_id;
 		$scope.activeHomey = window.localStorage.activeHomey;
-//		$rootScope.activeHomey = $scope.activeHomey;
 	}
 	
 	$rootScope.$on('header.auth.getActiveHomey', function(){
@@ -39,8 +38,7 @@ var HeaderAuthController = function($scope, $rootScope, $http)
 	};
 	
 	$scope.login = function() {
-		$scope.$parent.setPopup(window.CONFIG.paths.login, true);
-		$rootScope.$emit('devkit.blur', true);
+		$popup.open('login', $scope);
 	};
 
 	$scope.logout = function() {
@@ -51,6 +49,10 @@ var HeaderAuthController = function($scope, $rootScope, $http)
 		$scope.user = undefined;
 		$scope.activeHomey = undefined;
 	};
+	
+	$scope.openMy = function() {
+		window.open( window.CONFIG.paths.account );
+	}
 	
 	$scope.getUserInfo = function() {
 		$http({
@@ -120,8 +122,7 @@ var HeaderAuthController = function($scope, $rootScope, $http)
 			window.localStorage.refresh_token = e.data.refreshToken;
 
 			// hide popup
-			$scope.$parent.setBlur(false);
-			$scope.$parent.setPopup('', false);
+			$popup.close();
 
 			// set userinfo
 			$scope.getUserInfo();
@@ -129,69 +130,6 @@ var HeaderAuthController = function($scope, $rootScope, $http)
 	});
 }
 
-HeaderAuthController.$inject = ['$scope', '$rootScope', '$http'];
+HeaderAuthController.$inject = ['$scope', '$rootScope', '$http', '$popup'];
 
 app.controller("HeaderAuthController", HeaderAuthController);
-
-
-/*
-	
-var AuthController = function($scope, $auth)
-{
-	
-	$scope.user = {};
-
-	// listen for a message from the iframe
-	window.addEventListener('message', function(e)
-	{
-		$scope.$apply(function(){
-
-			// save tokens to localStorage
-			window.localStorage.access_token = e.data.accessToken;
-			window.localStorage.refresh_token = e.data.refreshToken;
-
-			$scope.setBlur(false);
-			$scope.setPopup('', false);
-
-			$auth.getUserInfo().then(function(result) 
-			{
-				$scope.user = result.data;
-			});
-		});
-	});
-
-	if(	typeof $scope.user == 'undefined' ) {
-		$scope.user = {};
-
-		if( typeof window.localStorage.access_token == 'undefined' || typeof window.localStorage.refresh_token == 'undefined' )
-		{
-			$scope.user.status = 'logged-out';
-			$scope.user.statusMessage = 'Log in';
-		}
-		else
-		{
-			$auth.getUserInfo().then(function(result) 
-			{
-				$scope.user = result.data;
-			});	
-		}
-	}
-
-	$scope.login = function()
-	{
-		$scope.setPopup(window.PATH.auth.loginUrl, true);
-
-		$scope.user = $auth.login();
-	}
-
-	$scope.logout  = function()
-	{
-		$scope.user = $auth.logout();
-	}
-}
-
-AuthController.$inject = ['$scope', '$auth'];
-
-app.controller("AuthController", AuthController);
-
-*/

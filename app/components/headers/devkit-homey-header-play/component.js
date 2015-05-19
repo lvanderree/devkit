@@ -5,10 +5,10 @@ var tmp 		= require('tmp');
 var request		= require('request');
 var archiver	= require('archiver');
 
-var HeaderPlayController = function($scope, $rootScope, $filter)
+var HeaderPlayController = function($scope, $rootScope, $filter, $popup)
 {
-		
-	var logsEl = document.getElementById('logs');
+	
+	$scope.debugUrl		= '';
 	
 	$scope.playing 		= false;
 	$scope.uploading 	= false;
@@ -20,8 +20,13 @@ var HeaderPlayController = function($scope, $rootScope, $filter)
 	});
 	
 	$rootScope.$watch("activeHomey", function(){		
+				
+		if( typeof $rootScope.user == 'undefined' ) return;
+		if( !Array.isArray($rootScope.user.homeys) ) return;
+		
 		$scope.homey = $filter('filter')( $rootScope.user.homeys, { _id: $rootScope.activeHomey }, true )[0];
-		logsEl.src = 'http://' + $scope.homey.ip_internal + '/manager/devkit/#/?token=' + $scope.homey.token;
+		$scope.debugUrl = 'http://' + $scope.homey.ip_internal + '/manager/devkit/#/?token=' + $scope.homey.token;
+				
 	});
 	
 	$scope.playpause = function(){
@@ -86,13 +91,10 @@ var HeaderPlayController = function($scope, $rootScope, $filter)
 					$scope.status = 'Running';
 					$scope.playing = true;
 					$scope.running_app = response.result.app_id;
-					
+	
 					// show logs
-					logsEl.src = 'http://' + address + '/manager/devkit/#/?app=' + response.result.app_id;
-					logsEl.parentElement.classList.add('visible-1');
-					setTimeout(function(){
-						logsEl.parentElement.classList.add('visible-2');
-					}, 1);
+					$popup.open('debug', $scope);
+//					logsEl.src = 'http://' + address + '/manager/devkit/#/?app=' + response.result.app_id;
 			    });				
 			});
 		});
@@ -105,11 +107,7 @@ var HeaderPlayController = function($scope, $rootScope, $filter)
 		$scope.status = 'Stopping ' + $scope.running_app + '...';
 		
 		// hide logs
-		
-		logsEl.parentElement.classList.remove('visible-2');
-		setTimeout(function(){
-			logsEl.parentElement.classList.remove('visible-1');
-		}, 300);
+		$popup.close();
 		
 		$scope.request = request.del({
 			url: 'http://' + address + ':' + port + '/api/manager/devkit/' + $scope.running_app,
@@ -174,19 +172,6 @@ var HeaderPlayController = function($scope, $rootScope, $filter)
     
 }
 
-HeaderPlayController.$inject = ['$scope', '$rootScope', '$filter'];
+HeaderPlayController.$inject = ['$scope', '$rootScope', '$filter', '$popup'];
 
 app.controller("HeaderPlayController", HeaderPlayController);
-
-// logs
-window.addEventListener('load', function(){
-	
-	var logsWrapEl = document.createElement("div");
-	logsWrapEl.id = 'logs-wrap';
-	document.body.appendChild(logsWrapEl);
-	
-	var logsEl = document.createElement("iframe");
-	logsEl.id = 'logs';
-	logsWrapEl.appendChild(logsEl);
-	
-});

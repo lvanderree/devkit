@@ -64,7 +64,36 @@ app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeo
 	]);
 	
 	$menu.setConfig([
-		
+		{
+			id: 'file',
+			label: 'File',
+			submenu: [
+				{
+					id: 'project-new',
+					label: 'New Project...',
+					hotkey: 'meta+shift+n'
+				},
+				{
+					id: 'project-open',
+					label: 'Open Project...',
+					hotkey: 'meta+shift+o'
+				},
+				{
+					type: 'seperator'
+				},
+				{
+					id: 'file-new',
+					label: 'New File',
+					hotkey: 'meta+n',
+					submenu: [
+						{
+							id: 'foo',
+							label: 'Bar'
+						}
+					]
+				}
+			]
+		}
 	]);
 	
 }]);

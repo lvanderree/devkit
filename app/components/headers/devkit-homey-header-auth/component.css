@@ -14,7 +14,7 @@
 		color: rgba(255,255,255,1);
 		text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 		margin: 0 6px;
-		color: rgba(255,255,255,0.75);
+		color: white;
 	}
 	#header-auth .avatar {
 		vertical-align: middle;
@@ -26,13 +26,16 @@
 	#header-auth .avatar-default {
 		background: url(./img/avatar-fallback.jpg) no-repeat center center;
 		background-size: contain;
-		opacity: 0.85;
 	}
-	#header-auth .avatar-default:hover {
+	#header-auth:hover .avatar-default,
+	#header-auth:hover .name {
 		opacity: 1;
 	}
-	#header-auth .avatar-default:active {
-		opacity: 0.85;
+	#header-auth .name,
+	#header-auth .avatar-default,
+	#header-auth:active .name,
+	#header-auth:active .avatar-default {
+		opacity: 0.75;
 	}
 	#header-auth:before {
 		content: "";

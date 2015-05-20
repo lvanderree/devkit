@@ -69,28 +69,93 @@ app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeo
 			label: 'File',
 			submenu: [
 				{
-					id: 'project-new',
-					label: 'New Project...',
-					hotkey: 'meta+shift+n'
-				},
+					id: 'project',
+					label: 'Project',
+					submenu: [
+						{
+							id: 'project-new',
+							label: 'New Project...',
+							hotkey: 'meta+shift+n'
+						},
+						{
+							id: 'project-open',
+							label: 'Open Project...',
+							hotkey: 'meta+shift+o'
+						},
+						{
+							id: 'project-close',
+							label: 'Close Project',
+							hotkey: 'meta+shift+w'
+						}
+					]
+				},			
 				{
-					id: 'project-open',
-					label: 'Open Project...',
-					hotkey: 'meta+shift+o'
-				},
-				{
-					type: 'seperator'
-				},
+					type: 'separator'
+				},		
 				{
 					id: 'file-new',
 					label: 'New File',
-					hotkey: 'meta+n',
-					submenu: [
-						{
-							id: 'foo',
-							label: 'Bar'
-						}
-					]
+					hotkey: 'meta+n'
+				},
+				{
+					id: 'file-open',
+					label: 'Open File',
+					hotkey: 'meta+o'
+				},
+				{
+					id: 'file-close',
+					label: 'Close File',
+					hotkey: 'meta+w'
+				},
+				{
+					type: 'separator'
+				},
+				{
+					id: 'save',
+					label: 'Save',
+					hotkey: 'meta+s'
+				},
+				{
+					id: 'save-as',
+					label: 'Save As...',
+					hotkey: 'meta+shift+s'
+				}
+			]
+		},
+		{
+			id: 'edit',
+			label: 'Edit',
+			submenu: [
+				{
+					id: 'cut',
+					label: 'Cut',
+					hotkey: 'meta+x'
+				},
+				{
+					id: 'copy',
+					label: 'Copy',
+					hotkey: 'meta+c'
+				},
+				{
+					id: 'paste',
+					label: 'Paste',
+					hotkey: 'meta+v'
+				}
+			]
+		},
+		{
+			id: 'project',
+			label: 'Project',
+			submenu: [
+				{
+					id: 'project-run',
+					label: 'Run',
+					hotkey: 'meta+r'
+				},
+				{
+					id: 'project-runbrk',
+					label: 'Run (break)',
+					hotkey: 'meta+shift+r'
 				}
 			]
 		}

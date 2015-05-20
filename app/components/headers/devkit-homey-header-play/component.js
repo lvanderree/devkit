@@ -29,6 +29,11 @@ var HeaderPlayController = function($scope, $rootScope, $filter, $popup)
 				
 	});
 	
+	$rootScope.$on('menu.project-run', function(){
+		$scope.playpause();
+		// TODO
+	});
+	
 	$scope.playpause = function(){
 			
 		if( typeof $scope.homey == 'undefined' ) {

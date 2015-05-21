@@ -52,6 +52,12 @@ wrap.blurred:after {
 		border-radius: 3px 3px 0 0;
 		background: white;
 	}
+	#header-menu > ul > li > .label-wrap {
+		opacity: 0.9;
+	}
+	#header-menu > ul > li:hover > .label-wrap {
+		opacity: 1;
+	}
 	#header-menu ul li ul {
 		box-shadow: 0 3px 3px rgba(0,0,0,0.1);
 		z-index: 3;

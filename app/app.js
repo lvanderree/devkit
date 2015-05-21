@@ -69,25 +69,19 @@ app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeo
 			label: 'File',
 			submenu: [
 				{
-					id: 'project',
-					label: 'Project',
-					submenu: [
-						{
-							id: 'project-new',
-							label: 'New Project...',
-							hotkey: 'meta+shift+n'
-						},
-						{
-							id: 'project-open',
-							label: 'Open Project...',
-							hotkey: 'meta+shift+o'
-						},
-						{
-							id: 'project-close',
-							label: 'Close Project',
-							hotkey: 'meta+shift+w'
-						}
-					]
+					id: 'project-new',
+					label: 'New Project...',
+					hotkey: 'meta+shift+n'
+				},
+				{
+					id: 'project-open',
+					label: 'Open Project...',
+					hotkey: 'meta+shift+o'
+				},
+				{
+					id: 'project-close',
+					label: 'Close Project',
+					hotkey: 'meta+shift+w'
 				},			
 				{
 					type: 'separator'

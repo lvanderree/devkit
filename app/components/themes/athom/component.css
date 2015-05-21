@@ -38,6 +38,10 @@ wrap.blurred:after {
 	top: 0;
 }
 
+header {
+	z-index: 99;
+}
+
 #header-menu {
 }
 	#header-menu > ul > li {

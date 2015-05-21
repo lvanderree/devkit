@@ -31,17 +31,17 @@
 	#header-auth:hover .name {
 		opacity: 1;
 	}
-	#header-auth .name,
-	#header-auth .avatar-default,
-	#header-auth:active .name,
-	#header-auth:active .avatar-default {
+	#header-auth .user .name,
+	#header-auth .user .avatar-default,
+	#header-auth .user:active .name,
+	#header-auth .user:active .avatar-default {
 		opacity: 0.75;
 	}
 	#header-auth:before {
 		content: "";
 		display: block;
 		position: absolute;
-		z-index: 9999;
+		z-index: 9999999999999;
 		right: 0px;
 		top: 0px;
 		width: 24px;
@@ -52,6 +52,8 @@
 		opacity: 0;
 		visibility: hidden;
 		transition: all 0.5s;
+		
+		display: none;
 	}
 	#header-auth.logging-in:before {
 		opacity: 1;
@@ -62,7 +64,7 @@
 	}
 	#header-auth .dropdown {
 		position: absolute;
-		z-index: 999999;
+		z-index: 9999;
 		list-style: none;
 		right: -3px;
 		top: 38px;

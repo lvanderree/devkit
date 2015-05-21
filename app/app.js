@@ -94,6 +94,11 @@ app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeo
 					id: 'file-new',
 					label: 'New File',
 					hotkey: 'meta+n'
+				},	
+				{
+					id: 'folder-new',
+					label: 'New File',
+					hotkey: 'meta+alt+n'
 				},
 				{
 					id: 'file-open',

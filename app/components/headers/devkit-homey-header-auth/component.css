@@ -27,14 +27,11 @@
 		background: url(./img/avatar-fallback.jpg) no-repeat center center;
 		background-size: contain;
 	}
-	#header-auth:hover .avatar-default,
-	#header-auth:hover .name {
+	#header-auth:hover .user {
 		opacity: 1;
 	}
-	#header-auth .user .name,
-	#header-auth .user .avatar-default,
-	#header-auth .user:active .name,
-	#header-auth .user:active .avatar-default {
+	#header-auth .user,
+	#header-auth .user:active {
 		opacity: 0.75;
 	}
 	#header-auth:before {

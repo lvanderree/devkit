@@ -37,9 +37,6 @@ loadModule('font-awesome',	'theme',	'./app/components/themes/font-awesome/');
  */
 app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeout, $file, $menu) {
 	
-	// devmode
-	require('nw.gui').Window.get().showDevTools();
-	
 	// set editor config
 	$file.setConfig([
 		{
@@ -161,7 +158,22 @@ app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeo
 				}
 */
 			]
+		},
+		{
+			id: 'editor',
+			label: 'Editor',
+			submenu: [
+				{
+					id: 'devtools',
+					label: 'Show Inspector',
+					hotkey: 'meta+/'
+				}
+			]
 		}
 	]);
+	
+	$rootScope.$on('menu.devtools', function(){
+		require('nw.gui').Window.get().showDevTools();
+	});
 	
 }]);

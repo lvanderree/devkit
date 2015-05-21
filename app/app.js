@@ -146,11 +146,13 @@ app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeo
 					label: 'Run',
 					hotkey: 'meta+r'
 				},
+/*
 				{
 					id: 'project-runbrk',
 					label: 'Run (break)',
 					hotkey: 'meta+shift+r'
 				}
+*/
 			]
 		}
 	]);

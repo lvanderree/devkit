@@ -51,7 +51,7 @@ header {
 		color: white;
 	}
 	#header-menu > ul > li.visibleSubmenu {
-		color: #333;
+		color: black;
 		text-shadow: none;
 		border-radius: 3px 3px 0 0;
 		background: white;
@@ -73,7 +73,7 @@ header {
 	}
 	#header-menu ul li ul li .label-wrap {
 		padding: 1px 10px;
-		color: #333;
+		color: black;
 		background: white;	
 	}
 	#header-menu ul li ul li:hover > .label-wrap {

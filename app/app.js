@@ -20,7 +20,7 @@ loadModule('auth', 			'header',	'./app/components/headers/devkit-homey-header-au
 loadModule('play', 			'header',	'./app/components/headers/devkit-homey-header-play/');
 
 // widgets
-// TODO
+loadModule('ledring', 		'widget',	'./app/components/widgets/ledring/');
 
 // popups
 loadModule('login',			'popup',	'./app/components/popups/login/');
@@ -59,6 +59,13 @@ app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeo
 			dir: '/',
 			config: {
 				editor: "manifest"
+			}
+		},
+		{
+			ext: '.js',
+			dir: '/animations/',
+			config: {
+				widgets: [ 'ledring' ]
 			}
 		}
 	]);

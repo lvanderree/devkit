@@ -24,6 +24,17 @@ body.maximized wrap {
 	border-width: 0;
 }
 
+html {
+	-webkit-transform: scale(0.9);
+	opacity: 0.5;
+	transition: all 0.75s;
+}
+
+html.loaded {
+	-webkit-transform: scale(1.0);
+	opacity: 1;
+}
+
 wrap.blurred {
 	-webkit-filter: blur(2px) grayscale(30%)
 }
@@ -112,17 +123,27 @@ header {
 }
 
 #filetree li .label {
-	position: relative;
 	box-sizing: border-box;
 	border: 1px solid transparent;
 	border-right: none;
 	transition: none;
 }
-#filetree li .label:hover {
-	background-color: rgba(255,255,255,0.05);
+#filetree li .label:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 25px;
+	background-color: white;
+	display: none;
 }
-#filetree li .label.selected {
-	background-color: rgba(255,255,255,0.2);
+#filetree li .label:hover:before {
+	display: block;
+	opacity: 0.05;	
+}
+#filetree li .label.selected:before {
+	display: block;
+	opacity: 0.15;
 }
 
 #filetree li .label .name,
@@ -139,7 +160,7 @@ header {
 	background: white;	
 }
 
-#filetree li .label .expand:before {
+#filetree li .label .expand {
 	border-left-color: white;
 }
 
@@ -160,8 +181,12 @@ tabs tab {
 tabs tab:hover {
 	background: #f6f6f6;	
 }
+tabs tab:first-child {
+	border-top-left-radius: 3px;
+}
 tabs tab:last-child {
 	border-right: none;
+	border-top-right-radius: 3px;
 }
 tabs tab:active {
 	background: #f0f0f0;	

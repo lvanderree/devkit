@@ -4,12 +4,14 @@ var path 	= require('path');
 
 var semver	= require('semver');
 
-var EditorManifestController = function( $scope, $rootScope, $http, $q, $events )
+var EditorManifestController = function( $scope, $rootScope, $http, $q, $events, $timeout )
 {
 	
 	$scope.manifest = angular.fromJson( $scope.file.code );
-		
-	$scope.file._changed = false;
+	
+	$timeout(function(){
+		$scope.file._changed = false;		
+	}, 50);
 	
 	$scope.languages = [
 		{
@@ -161,6 +163,8 @@ var EditorManifestController = function( $scope, $rootScope, $http, $q, $events 
 	
     $scope.received = function( event, file ) {
 	    
+	    if( typeof file == 'undefined' ) return;
+	    
 	    if( file.type != 'image/svg+xml' ) {
 		    alert('Only svg files are allowed for your app icon');
 		    return;
@@ -185,32 +189,9 @@ var EditorManifestController = function( $scope, $rootScope, $http, $q, $events 
 		});
 		
     }
-	
-	/*
-    $rootScope.$on('editor.saveRequest.' + $scope.file.path, function(){
-	    
-	    var manifest = angular.copy( $scope.manifest );
-		
-		manifest.permissions = manifest.permissions.filter(function(tag){ return tag; }).map(function(tag) { return tag.text; });
-		
-		manifest.interfaces.speech.triggers.forEach(function( trigger ){
-			for( var synonym_lang in trigger.synonyms ) {
-				var synonyms = trigger.synonyms[synonym_lang].filter(function(tag){ return tag; }).map(function(tag) { return tag.text; });
-				if( synonyms.length > 0 ) { 
-					trigger.synonyms[synonym_lang] = synonyms;
-				} else {
-					delete trigger.synonyms[synonym_lang];
-				}
-			}
-		});
-	     	    
-		$scope.file.code = angular.toJson( manifest, true );
-		$rootScope.$emit('editor.performSave');
-    });
-    */
     	
 }
 
-EditorManifestController.$inject = ['$scope', '$rootScope', '$http', '$q', '$events'];
+EditorManifestController.$inject = ['$scope', '$rootScope', '$http', '$q', '$events', '$timeout'];
 
 app.controller("EditorManifestController", EditorManifestController);

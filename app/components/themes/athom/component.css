@@ -130,6 +130,10 @@ header {
 	color: white;
 	text-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
+#filetree li .label .name-renaming {
+	border: 1px solid rgba(0,0,0,0.1);
+	background: rgba(0,0,0,0.1);
+}
 
 #filetree li .label .icon {
 	background: white;	

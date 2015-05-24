@@ -22,12 +22,16 @@ app.controller("WidgetLedringController", function( $scope, $rootScope, $interva
 	$scope.animate = function(){
 						
 		if( $scope.file_path != $scope.$parent.active ) return;
-	
-		var dirname = require('../app/components/widgets/ledring/dirname.js')();
-		if( typeof dirname == 'undefined' ) return;
 		
-		var oneColorPath = path.join( dirname, 'one-color-all.js' );
+		var oneColorPath = path.join(process.cwd(), 'app', 'components', 'widgets', 'ledring', 'one-color-all.js');
+		
+		// fucking windows: replace slashes \ -> \\	
+		if( process.platform == 'win32' ) {
+			oneColorPath = oneColorPath.replace(/\\/g, '\\\\')
+		}
+				
 		var homeyCode = 'global.Homey = { color: require("' + oneColorPath + '") }; ';
+				
 		var code = homeyCode + $scope.file.code;
 				
 		var animation = requireFromString( code );

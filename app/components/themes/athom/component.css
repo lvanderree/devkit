@@ -122,6 +122,14 @@ header {
 	position: relative;
 }
 
+#sidebar-helper {
+	display: none;
+}
+
+#filetree {
+	height: 100%;
+}
+
 #filetree li .label {
 	box-sizing: border-box;
 	border: 1px solid transparent;

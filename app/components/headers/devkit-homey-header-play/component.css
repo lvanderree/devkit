@@ -35,7 +35,7 @@
 #header-play .wrap.enabled {
 	opacity: 1;
 }
-	#header-play .wrap .button {
+	#header-play .wrap .btn {
 		display: inline-block;
 		vertical-align: middle;
 		
@@ -51,15 +51,15 @@
 		
 		opacity: 0.85;
 	}
-	#header-play .wrap .button:hover {
+	#header-play .wrap.enabled .btn:hover {
 		transform: scale(1.2);
 		opacity: 1;
 	}
-	#header-play .wrap .button:active {
+	#header-play .wrap.enabled .btn:active {
 		transform: scale(0.9);
 		opacity: 0.85;
 	}
-	#header-play .wrap.playing .button {
+	#header-play .wrap.playing .btn {
 		border-top-width: 0;
 		border-bottom-width: 0;
 		border-left-width: 10px;

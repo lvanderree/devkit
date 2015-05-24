@@ -1,7 +1,7 @@
 var fs		= require('fs');
 var path	= require('path');
 
-var HeaderTitleController = function($scope, $rootScope)
+var HeaderTitleController = function($scope, $rootScope, $project)
 {
 	
 	$scope.manifest = {};
@@ -19,9 +19,12 @@ var HeaderTitleController = function($scope, $rootScope)
     }
     
     $scope.getManifest = function(){
-	    if( typeof window.localStorage.project_dir == 'undefined' ) return;
 	    
-	    var manifestPath = path.join(window.localStorage.project_dir, 'app.json');
+	    var project_dir = $project.getPath();
+	    	    
+	    if( !project_dir || typeof project_dir == 'undefined' ) return { name: {en: ''}, id: '' };
+	    
+	    var manifestPath = path.join(project_dir, 'app.json');
 	    
 	    if( fs.existsSync(manifestPath) ) {	    
 		    var manifestContents = fs.readFileSync( manifestPath ).toString();
@@ -42,11 +45,15 @@ var HeaderTitleController = function($scope, $rootScope)
 	$rootScope.$on('service.project.ready', function(){
 		$scope.update();		
 	});
+	
+	$rootScope.$on('service.project.closed', function(){
+		$scope.update();		
+	});
 
 	$scope.update();
     
 }
 
-HeaderTitleController.$inject = ['$scope', '$rootScope'];
+HeaderTitleController.$inject = ['$scope', '$rootScope', '$project'];
 
 app.controller("HeaderTitleController", HeaderTitleController);

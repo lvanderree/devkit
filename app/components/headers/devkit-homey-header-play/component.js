@@ -5,11 +5,12 @@ var tmp 		= require('tmp');
 var request		= require('request');
 var archiver	= require('archiver');
 
-var HeaderPlayController = function($scope, $rootScope, $filter, $popup)
+var HeaderPlayController = function($scope, $rootScope, $filter, $popup, $project)
 {
 	
 	$scope.debugUrl		= '';
 	
+	$scope.project		= false;	
 	$scope.playing 		= false;
 	$scope.uploading 	= false;
 	$scope.stopping 	= false;
@@ -34,10 +35,18 @@ var HeaderPlayController = function($scope, $rootScope, $filter, $popup)
 		// TODO
 	});
 	
+	$rootScope.$on('service.project.ready', function(){
+		$scope.project = $project.getPath();
+	});
+	
+	$rootScope.$on('service.project.closed', function(){
+		$scope.project = false;
+	});
+	
 	$scope.playpause = function(){
 			
 		if( typeof $scope.homey == 'undefined' ) {
-			alert('Please select a Homey first');
+			//alert('Please select a Homey first!');
 			return;
 		}
 		
@@ -177,6 +186,6 @@ var HeaderPlayController = function($scope, $rootScope, $filter, $popup)
     
 }
 
-HeaderPlayController.$inject = ['$scope', '$rootScope', '$filter', '$popup'];
+HeaderPlayController.$inject = ['$scope', '$rootScope', '$filter', '$popup', '$project'];
 
 app.controller("HeaderPlayController", HeaderPlayController);

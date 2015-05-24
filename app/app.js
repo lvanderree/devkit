@@ -177,8 +177,8 @@ app.run(['$rootScope', '$timeout', '$file', '$menu', function($rootScope, $timeo
 		}
 	]);
 	
-	$rootScope.$on('menu.devtools', function(){
+//	$rootScope.$on('menu.devtools', function(){
 		require('nw.gui').Window.get().showDevTools();
-	});
+//	});
 	
 }]);

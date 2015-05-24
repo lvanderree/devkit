@@ -4,6 +4,8 @@ Create Homey apps with ease! If you're only looking to get the Development Kit, 
 
 This repository is meant for development of the Development Kit itself.
 
+![](https://developers.athom.nl/img/devkit.png)
+
 ### Run instructions
 
 1. clone this repo ```git clone https://github.com/athombv/devkit.git```

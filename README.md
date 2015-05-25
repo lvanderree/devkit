@@ -10,10 +10,11 @@ This repository is meant for development of the Development Kit itself.
 
 1. clone this repo ```git clone https://github.com/athombv/devkit.git```
 2. cd to the directory ```cd devkit```
-3. install the node packages ```npm install```
-4. install the bower packages ```cd www; bower install; cd ..```
-5. make a symbolic link (or copy) [devkit-core](https://github.com/printhom/devkit-core) so there's a folder `core` next to `package.json`, `app.js` etc.
-6. Download a pre-built nw.js binary from http://nwjs.io, and execute `nw .` if you're on OS X. On Windows, drag the devkit folder on the `nw.exe` binary.
+3. install the submodule ```git submodule update --init --recursive``` for the devkit-core
+4. install the node packages ```npm install```
+5. install the bower packages ```./node_modules/.bin/bower install```
+6. run the grunt builder ```./node_modules/.bin/grunt  ``` to compile the depencencies
+7. Download a pre-built nw.js binary from http://nwjs.io, and execute `nw .` if you're on OS X or Linux. On Windows, drag the devkit folder on the `nw.exe` binary.
 
 ### Docs
 Please read them at [devkit-core](https://github.com/printhom/devkit-core).

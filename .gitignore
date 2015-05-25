@@ -5,8 +5,10 @@
 node_modules
 bower_components
 public
-core
 
 # build
 build
 cache
+
+# nw browser
+nw
